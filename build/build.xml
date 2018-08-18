@@ -161,6 +161,7 @@
 			<arg value="--working-dir=${build.full.dir}"/>
 			<arg value="-o"/>
 			<arg value="--prefer-dist"/>
+            <arg value="--no-dev" />
 		</composer>
     </target>
 
@@ -266,8 +267,8 @@
 
         <filehash file="${filename}" algorithm="sha1" propertyname="phar.hash"/>
         <echo file="${filename}.sha1">${phar.hash} ${basefilename}</echo>
-
-        <exec command="gpg -u mrook@php.net --detach-sign --output ${filename}.asc ${filename}" checkreturn="true" logoutput="true"/>
+        
+        <exec command="gpg -u yuanjixun@7k7k.com --detach-sign --output ${filename}.asc ${filename}" checkreturn="true" logoutput="true"/>
     </target>
 
 </project>
