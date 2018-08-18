@@ -398,6 +398,10 @@ class PHPUnitTask extends Task
             throw new Exception("PHPUnitTask depends on Xdebug being installed to gather code coverage information.");
         }
 
+        if ($this->bootstrap) {
+            require $this->bootstrap;
+        }
+
         $this->loadPHPUnit();
 
         if (class_exists('\PHPUnit_Framework_TestSuite')) {
@@ -407,10 +411,6 @@ class PHPUnitTask extends Task
         }
 
         $autoloadSave = spl_autoload_functions();
-
-        if ($this->bootstrap) {
-            require $this->bootstrap;
-        }
 
         if ($this->configuration) {
             $arguments = $this->handlePHPUnitConfiguration($this->configuration);
